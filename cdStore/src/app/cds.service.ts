@@ -6,7 +6,7 @@ import { CD } from './models/cd.model';
 })
 export class CdsService {
   constructor() {}
-  getCds() :CD[] {
+  getCds(): CD[] {
     return [
       {
         id: 1,
@@ -38,5 +38,13 @@ export class CdsService {
         quantite: 0,
       },
     ];
+  }
+  getCdById(id: number): CD {
+    const cd = this.getCds().find((cd) => cd.id === id);
+    if (cd) {
+      return cd;
+    } else {
+      throw new Error('CD not found');
+    }
   }
 }

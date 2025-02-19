@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ListcdComponent } from '../list-cd/list-cd.component';
 
 @Component({
   selector: 'app-header',

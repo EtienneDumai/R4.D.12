@@ -6,19 +6,22 @@ import { AppComponent } from './app.component';
 import { CDComponent } from './cd/cd.component';
 import { HeaderComponent } from './header/header.component';
 import { ListcdComponent } from './list-cd/list-cd.component';
+import { CdsService } from './cds.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CDComponent,
     HeaderComponent,
-    ListcdComponent
+    ListcdComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CdsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
