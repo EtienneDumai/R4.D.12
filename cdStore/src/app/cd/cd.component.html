@@ -1,5 +1,5 @@
 <div class="cd-card" [ngClass]="{'cdadded' : Cd.onsale ===true}">
-    <h3>{{Cd.titre | uppercase}}</h3>
+    <h3>{{Cd.title | uppercase}}</h3>
     <p>Sortie le : {{Cd.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
     <p>Auteur / groupe : {{Cd.author}}</p>
     <p>Prix: {{Cd.price | currency: 'EUR'}}</p>

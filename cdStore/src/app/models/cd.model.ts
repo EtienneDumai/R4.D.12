@@ -19,4 +19,5 @@ export class CD {
         if (onsale !== undefined)
             this.onsale = onsale;
     }
+    
 }
