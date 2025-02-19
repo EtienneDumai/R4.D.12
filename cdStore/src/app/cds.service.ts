@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { CD } from './models/cd.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CdsService {
   constructor() {}
-  getCds() {
+  getCds() :CD[] {
     return [
       {
         id: 1,
