@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ListcdComponent } from './list-cd/list-cd.component';
 import { CdsService } from './cds.service';
 import { HomeComponent } from './home/home.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HomeComponent } from './home/home.component';
     CDComponent,
     HeaderComponent,
     ListcdComponent,
-    HomeComponent
+    HomeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
