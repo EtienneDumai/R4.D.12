@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="monForm">
+    <section class="subForm saisieForm">
+        <h2>Ajouter un CD</h2>
+        <form [formGroup]="formulaire">
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" id="title" formControlName="title"><br>
+                <label for="author">Auteur</label>
+                <input type="text" class="form-control" id="author" formControlName="author"><br>
+                <label for="thumbnail">Couverture</label>
+                <input type="text" class="form-control" id="thumbnail" formControlName="thumbnail"><br>
+                <label for="dateDeSortie">Date de sortie</label>
+                <input type="date" class="form-control" id="dateDeSortie" formControlName="dateDeSortie"><br>
+                <label for="quantite">Quantité</label>
+                <input type="number" class="form-control" id="quantite" formControlName="quantite"><br>
+                <label for="price">Prix</label>
+                <input type="number" class="form-control" id="price" formControlName="price"><br>
+            </div>
+            <button class="btn btn-primary" [disabled]="formulaire.invalid" (click)="onSubmit()">Ajouter</button>
+        </form>
+    </section>
+    <section class="subForm visuForm">
+        <h2>Vue du CD</h2>
+        <div *ngIf="currentCD!==undefined">
+            <h3>{{currentCD.title}}</h3>
+            <p>Sortie le : {{currentCD.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
+            <p>Auteur : {{currentCD.author}}</p>
+            <p>Prix : {{currentCD.price | currency : 'EUR'}}</p>
+            <p>Quantité : {{currentCD.quantite}}</p>
+            <img [src]="currentCD.thumbnail" alt="{{currentCD.title}}">
+        </div>
+    </section>
+
+</div>
