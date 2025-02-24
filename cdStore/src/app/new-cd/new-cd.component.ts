@@ -29,10 +29,9 @@ export class NewCDComponent implements OnInit {
       },
       { updateOn: 'blur' }
     );
-  }
-
-  ngOnChange() {
+    
     this.formulaire.valueChanges.subscribe((formValue) => {
+      console.log("Formulaire changé");
       this.currentCD = {
         id: 0,
         title: formValue.title,
@@ -44,6 +43,10 @@ export class NewCDComponent implements OnInit {
         onsale: false,
       };
     });
+  }
+
+  ngOnChange() {
+    
   }
   onSubmit() {
     this.currentCD.title = this.formulaire.value.title;
