@@ -1,5 +1,5 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CD } from '../models/cd.model';
 @Component({
   selector: 'app-new-cd',
@@ -8,18 +8,29 @@ import { CD } from '../models/cd.model';
 })
 export class NewCDComponent implements OnInit {
   formulaire!: FormGroup;
-  currentCD: any ={};
+  currentCD!: CD;
+  thumbRegex!: RegExp;
   constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
-    this.formulaire = this.formBuilder.group({
-      title: [null],
-      author: [null],
-      thumbnail: [null],
-      dateDeSortie: [null],
-      quantite: [null],
-      price: [null],
-    });
+    this.thumbRegex = new RegExp(
+      'https?:\\/\\/.*\\.(?:png|jpg|jpeg|gif|svg|webp)$'
+    );
+    this.formulaire = this.formBuilder.group(
+      {
+        title: [null, [Validators.required, Validators.minLength(6)]],
+        author: [null, [Validators.required, Validators.minLength(6)]],
+        thumbnail: [
+          null,
+          [Validators.required, Validators.pattern(this.thumbRegex)],
+        ],
+        dateDeSortie: [null, [Validators.required, Validators.min(0)]],
+        quantite: [null, [Validators.required, Validators.min(0)]],
+        price: [null, [Validators.required, Validators.min(0)]],
+      },
+      { updateOn: 'blur' }
+    );
   }
+
   ngOnChange() {
     this.formulaire.valueChanges.subscribe((formValue) => {
       this.currentCD = {
@@ -32,10 +43,11 @@ export class NewCDComponent implements OnInit {
         price: formValue.price,
         onsale: false,
       };
-    });}
+    });
+  }
   onSubmit() {
-    this.currentCD.author = this.formulaire.value.author;
     this.currentCD.title = this.formulaire.value.title;
+    this.currentCD.author = this.formulaire.value.author;
     this.currentCD.thumbnail = this.formulaire.value.thumbnail;
     this.currentCD.dateDeSortie = this.formulaire.value.dateDeSortie;
     this.currentCD.quantite = this.formulaire.value.quantite;
