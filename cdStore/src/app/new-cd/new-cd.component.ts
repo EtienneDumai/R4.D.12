@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CD } from '../models/cd.model';
+import { CdsService } from '../cds.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-cd',
   templateUrl: './new-cd.component.html',
@@ -29,9 +31,9 @@ export class NewCDComponent implements OnInit {
       },
       { updateOn: 'blur' }
     );
-    
+
     this.formulaire.valueChanges.subscribe((formValue) => {
-      console.log("Formulaire changé");
+      console.log('Formulaire changé');
       this.currentCD = {
         id: 0,
         title: formValue.title,
@@ -45,16 +47,19 @@ export class NewCDComponent implements OnInit {
     });
   }
 
-  ngOnChange() {
+  ngOnChange() {}
+  onSubmit() {
+    let newCD: CD = {
+      id: 0,
+      title: this.formulaire.get('title')?.value,
+      author: this.formulaire.get('author')?.value,
+      thumbnail: this.formulaire.get('thumbnail')?.value,
+      dateDeSortie: this.formulaire.get('dateDeSortie')?.value,
+      quantite: this.formulaire.get('quantite')?.value,
+      price: this.formulaire.get('price')?.value,
+      onsale: false,
+    };
     
   }
-  onSubmit() {
-    this.currentCD.title = this.formulaire.value.title;
-    this.currentCD.author = this.formulaire.value.author;
-    this.currentCD.thumbnail = this.formulaire.value.thumbnail;
-    this.currentCD.dateDeSortie = this.formulaire.value.dateDeSortie;
-    this.currentCD.quantite = this.formulaire.value.quantite;
-    this.currentCD.price = this.formulaire.value.price;
-    console.log(this.currentCD);
-  }
+
 }

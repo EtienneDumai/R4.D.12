@@ -16,7 +16,7 @@ export class CDComponent implements OnInit {
     ngOnInit(): void {
       this.idcd = this.route.snapshot.params['id'];
       if(this.idcd!==undefined){
-        this.theCd = this.cdService.getCdById(+this.idcd);
+        this.cdService.getCdById(+this.idcd).subscribe(cd => {this.theCd=cd});
       }
       else{
         this.theCd = this.Cd;
