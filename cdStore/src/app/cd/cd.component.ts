@@ -3,6 +3,7 @@ import { CD } from '../models/cd.model';
 import { CdsService } from '../cds.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-cd',
   templateUrl: './cd.component.html',

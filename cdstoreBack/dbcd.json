@@ -1,7 +1,7 @@
 {
   "CD": [
     {
-      "id": 1,
+      "id": "1",
       "title": "The Dark Side of the Moon",
       "author": "Pink Floyd",
       "price": 10,
@@ -10,7 +10,7 @@
       "quantite": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Pulse",
       "author": "Pink Floyd",
       "price": 10,
@@ -20,13 +20,23 @@
       "onsale": true
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Pulse1",
       "author": "Pink Floyd",
       "price": 100,
       "thumbnail": "https://pinkfloydhyperbase.dk/illu/covers/pulse.jpg",
       "dateDeSortie": "1974-04-11T00:00:00.000Z",
       "quantite": 0
+    },
+    {
+      "id": "31",
+      "title": "Etoile Noire",
+      "author": "Luv Resval",
+      "thumbnail": "https://static.fnac-static.com/multimedia/Images/FR/NR/e5/f0/cd/13496549/1507-1/tsp20210506112105/Etoile-noire-Edition-Nebuleuse-Edition-Fnac.jpg",
+      "dateDeSortie": "2025-02-06",
+      "quantite": 1,
+      "price": 25,
+      "onsale": false
     }
   ]
 }

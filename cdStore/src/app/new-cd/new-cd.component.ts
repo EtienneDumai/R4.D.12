@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CD } from '../models/cd.model';
 import { CdsService } from '../cds.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 @Component({
   selector: 'app-new-cd',
   templateUrl: './new-cd.component.html',
@@ -12,7 +12,11 @@ export class NewCDComponent implements OnInit {
   formulaire!: FormGroup;
   currentCD!: CD;
   thumbRegex!: RegExp;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private cdservice: CdsService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.thumbRegex = new RegExp(
       'https?:\\/\\/.*\\.(?:png|jpg|jpeg|gif|svg|webp)$'
@@ -59,7 +63,14 @@ export class NewCDComponent implements OnInit {
       price: this.formulaire.get('price')?.value,
       onsale: false,
     };
-    
+    this.cdservice.addCd(newCD).subscribe({
+      next: (cd) => {
+        console.log(cd);
+        this.router.navigateByUrl('/catalog');
+      },
+      error: (err) => {
+        console.log("Erreur lors de l'ajout du CD : " + err);
+      },
+    });
   }
-
 }
